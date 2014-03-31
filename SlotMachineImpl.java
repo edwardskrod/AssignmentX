@@ -1,11 +1,7 @@
 import java.util.Random;
 public class SlotMachineImpl {
 
-	private enum Graphic {
-		LUCKY7, BAR, BARBAR, BARBARBAR, MELON, GRAPE, 
-		STRAWBERRY, BANANA, BLANK	
-		
-	}
+	
 	
 	//private Board b;
 	
@@ -44,10 +40,13 @@ public class SlotMachineImpl {
 	/*this function receives an integer from 0 - 24 
 	 The number corresponds to a number on the reel.
      Odds:
-     LUCKY7:    1 / 25
-     BAR:       2 / 25
-     BARBAR:    2 / 25
-     BARBARBAR: 2 / 25
+     LUCKY7:    1 / 25  Odds of 3:  1 / 15,625 -  90% = $14,062.50
+     BAR:       2 / 25  Odds of 3:  8 / 15,625  1/ 1,953  - 90% =  $1,758
+     BARBAR:    2 / 25  Odds of 3:  8 / 15,625  1/ 1,953  - 90% =  $1,758
+     BARBARBAR: 2 / 25  Odds of 3:  8 / 15,625  1/ 1,953  - 90% =  $1,758
+     
+     Any BAR Combo:   6 / 25 Odds of 3: 216 / 15,625  (1 / 72.33) 
+     
      MELON:		2 / 25
      GRAPE		2 / 25
      STRAWBERRY 2 / 25
