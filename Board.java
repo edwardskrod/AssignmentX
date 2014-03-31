@@ -1,6 +1,10 @@
 
 public class Board {
 
+	// Constructor creates a new Board 
+	// 0 | 0 | 0
+	// 0 | 0 | 0
+	// 0 | 0 | 0
 	
 	public Board( )
 	{
@@ -19,20 +23,23 @@ public class Board {
 			
 	
 	public void printBoard() {
-	
-	for (int i = 0; i < 3; ++i) {
-				
-		for (int j = 0; j < 3; ++j) {
-					
-			System.out.println( board[i][j] );
-					
-		}
-
-	}
+		
+		final String divider = "------------";
+		
+		System.out.printf("%s", "Slot Machine:\n");
+		System.out.println();
+		System.out.printf("  %d | %d | %d\n",
+				this.board[0][0],this.board[0][1],this.board[0][2] );
+		System.out.printf("%s\n", divider);
+		System.out.printf("  %d | %d | %d\n",
+				this.board[1][0],this.board[1][1],this.board[1][2]);
+		System.out.printf("%s\n", divider);
+		System.out.printf("  %d | %d | %d\n\n",
+				this.board[2][0],this.board[2][1],this.board[2][2]);	
 }
+
 	
-	
-private int board[][];
+public int board[][];
 //private int boardPositions[][];	
 	
 }

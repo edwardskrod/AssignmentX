@@ -8,6 +8,7 @@ public class SlotMachine {
 		
 		Board b = new Board();
 		
+		SlotMachineImpl.spin(b);
 		b.printBoard();
 	}
 
