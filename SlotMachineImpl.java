@@ -39,19 +39,22 @@ public class SlotMachineImpl {
 	private static int virtualSpin( int num ) 
 	/*this function receives an integer from 0 - 24 
 	 The number corresponds to a number on the reel.
-     Odds:
-     LUCKY7:    1 / 25  Odds of 3:  1 / 15,625 -  90% = $14,062.50
-     BAR:       2 / 25  Odds of 3:  8 / 15,625  1/ 1,953  - 90% =  $1,758
-     BARBAR:    2 / 25  Odds of 3:  8 / 15,625  1/ 1,953  - 90% =  $1,758
-     BARBARBAR: 2 / 25  Odds of 3:  8 / 15,625  1/ 1,953  - 90% =  $1,758
+     Odds:				   Odds of getting 3 in a row		   Payout:
+     LUCKY7:    1 / 25     Odds of 3:  1 / 15,625   	       90% = $14,062.50
+     BAR:       2 / 25     Odds of 3:  1 / 1,953  			   90% =  $1,758
+     BARBAR:    2 / 25     Odds of 3:  1 / 1,953  			   90% =  $1,758
+     BARBARBAR: 2 / 25     Odds of 3:  1 / 1,953               90% =  $1,758
      
-     Any BAR Combo:   6 / 25 Odds of 3: 216 / 15,625  (1 / 72.33) 
+     Any BAR Combo:   6 / 25 Odds of 3: 1 / 72.33			   90% = $65	 
      
-     MELON:		2 / 25
-     GRAPE		2 / 25
-     STRAWBERRY 2 / 25
-     BANANA     2 / 25
-     BLANK      9 / 25
+     MELON:		3 / 25     Odds of 3:  1 / 578.7			   90% = $520
+     GRAPE		3 / 25     Odds of 3:  1 / 578.7			   90% = $520
+     STRAWBERRY 3 / 25     Odds of 3:  1 / 578.7			   90% = $520
+     BANANA     3 / 25     Odds of 3:  1 / 578.7			   90% = $520
+     
+     Any Fruit Combo: 12/25 Odds of 3: 1 / 9				   90% = $8
+     
+     BLANK      5 / 25      Odds of getting 3  1 / 125
 	*/
 	{
 		
@@ -75,25 +78,25 @@ public class SlotMachineImpl {
 				break;
 		case 8: num = 4;	// Corresponds to melon
 				break;				
-		case 9: num = 5;	// Corresponds to grape
+		case 9: num = 4;	// Corresponds to melon
 				break;	
 		case 10: num = 5;	// Corresponds to grape
 				break;	
-		case 11: num = 6;	// Corresponds to strawberry
+		case 11: num = 5;	// Corresponds to grape
 				break;
-		case 12: num = 6;	// Corresponds to strawberry
+		case 12: num = 5;	// Corresponds to grape
 				break;				
-		case 13: num = 7;	// Corresponds to banana
+		case 13: num = 6;	// Corresponds to strawberry
 				break;	
-		case 14: num = 7;	// Corresponds to banana
+		case 14: num = 6;	// Corresponds to strawberry
 				break;				
-		case 15: num = 8;	// Corresponds to BLANK
+		case 15: num = 6;	// Corresponds to strawberry
 				break;
-		case 16: num = 8;	// Corresponds to BLANK
+		case 16: num = 7;	// Corresponds to banana
 				break;
-		case 17: num = 8;	// Corresponds to BLANK
+		case 17: num = 7;	// Corresponds to banana
 				break;
-		case 18: num = 8;	// Corresponds to BLANK
+		case 18: num = 7;	// Corresponds to banana
 				break;				
 		case 19: num = 8;	// Corresponds to BLANK
 				break;
