@@ -27,7 +27,9 @@ public class SlotMachineImpl {
 	}  // end spin()
 	
 	private static int virtualSpin( int num ) 
-	/* This function receives an integer from 0 - 30 
+	/*  We are using a virtual reel in order to more accurately control the
+	* probability of getting any three numbers.  
+	* This function receives an integer from 0 - 30 
 	* The number corresponds to a number on the reel, 0 - 8.
 	* Odds:				    Odds of getting 3 in a row		  				 Payout:
 	* LUCKY7:    2 / 31     Odds of 3:  8 / 29,791   	1 / 3723    		 90% =  $3,352
