@@ -1,14 +1,13 @@
 
 public class Board {
 
-	// Constructor creates a new Board 
-	// 0 | 0 | 0
-	// 0 | 0 | 0
-	// 0 | 0 | 0
+	// Constructor creates a new Board with a parallel 2-d array of Null Strings
+	// 0 | 0 | 0			BLANK  | BLANK  | BLANK
+	// 0 | 0 | 0		    BLANK  | BLANK  | BLANK 
+	// 0 | 0 | 0		    BLANK  | BLANK  | BLANK 
 	
 	public Board( )
 	{
-		
 		board = new int [3][3];
 		boardTokens = new String[3][3];
 		
@@ -25,12 +24,11 @@ public class Board {
 			
 			for (int j = 0; j < 3; ++j) {
 				
-				boardTokens[i][j] = "";
+				boardTokens[i][j] = "BLANK";
 			}
 		}
 	}
 			
-	
 	public void printBoard() {
 		
 		final String divider = "------------";
@@ -46,6 +44,7 @@ public class Board {
 		System.out.printf("  %d | %d | %d\n\n",
 				this.board[2][0],this.board[2][1],this.board[2][2]);	
 	}
+
 	public void printBoardWithTokens() {
 		
 		final String divider = "------------";
@@ -68,9 +67,7 @@ public class Board {
 				this.boardTokens[2][0],this.boardTokens[2][1],this.boardTokens[2][2]);	
 	}
 	
-public int board[][];
-public String boardTokens[][];
-
-//private int boardPositions[][];	
+	public int board[][];
+	public String boardTokens[][];
 	
 }
