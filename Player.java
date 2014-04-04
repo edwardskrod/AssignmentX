@@ -45,5 +45,9 @@ public class Player {
 		return name;
 	}
 	
-	
+	public void printPlayerInfo( ) {
+		
+		System.out.println("Player Name: " + getPlayerName() );
+		System.out.println("Account Balance: " + getPlayerAccountBalance() );	
+	}
 }
