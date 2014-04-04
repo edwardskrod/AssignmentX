@@ -23,12 +23,18 @@ public class SlotMachine {
 		Scanner userChoice = new Scanner (System.in);
 		System.out.println("Press 'S' to Spin and 'X' to exit: ");
 		String c = userChoice.next();
-		
-		while (!c.equals("x") && !c.equals("X")){			// While the player has not exited the game 
-		
-			if ( c.equals("S") || c.equals("s") ) {
-		 
-				SlotMachineImpl.spin(board);
+		System.out.println("choose your boxes ");
+		int one = userChoice.nextInt();
+		int two = userChoice.nextInt();
+		int three = userChoice.nextInt();
+		int four = userChoice.nextInt();
+		int five = userChoice.nextInt();
+		int six = userChoice.nextInt();
+
+		SlotMachineImpl play;
+		while (!"x".equals(c) && !"X".equals(c)){			// While the player has not exited the game 
+			if ( "S".equals(c) || "s".equals(c) ) {
+				play = new SlotMachineImpl(board);
 				board.printBoardWithTokens();
 			} // end if
 			

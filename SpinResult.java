@@ -45,7 +45,7 @@ public enum SpinResult {
 	}
 
 	SpinResult(String name, int spinResult1, int spinResult2, int spinResult3) {
-		setSpin(name, spinResult1, spinResult1, spinResult1, IMPOSSIBLE_MATCH);
+		setSpin(name, spinResult1, spinResult2, spinResult3, IMPOSSIBLE_MATCH);
 	}
 
 	SpinResult(String name, int spinResult1, int spinResult2, int spinResult3,
