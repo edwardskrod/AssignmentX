@@ -38,6 +38,8 @@ public class SlotMachine {
 		// For testing;  Pretend there were winnings
 		thePlayer.setPlayerAccountBalance(12999);
 		
+		
+		// Save the winning in the file
 		FileHandler.saveAccountInformation(thePlayer);
 		
 		// Print the player info to console
