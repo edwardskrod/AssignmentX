@@ -1,3 +1,5 @@
+package SlotMachine;
+
 // entrance to program
 import java.util.Scanner;
 

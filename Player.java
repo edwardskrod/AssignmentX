@@ -1,3 +1,5 @@
+package SlotMachine;
+
 import javax.swing.JOptionPane;
 
 public class Player {

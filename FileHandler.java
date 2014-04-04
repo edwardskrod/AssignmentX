@@ -1,3 +1,5 @@
+package SlotMachine;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
