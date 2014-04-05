@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class Player {
 
 	private String playerName;
-	private int playerAccountBalance;
+	private double playerAccountBalance;
 	
 	
 	// Default Constructor
@@ -31,12 +31,19 @@ public class Player {
 		playerName = name;
 	}
 	
-	public int getPlayerAccountBalance ( ) {
+	public double getPlayerAccountBalance ( ) {
 		return playerAccountBalance;
 	}
 	
-	public void setPlayerAccountBalance ( int balance ) {
+	public void setPlayerAccountBalance ( double balance ) {
 		playerAccountBalance = balance;
+	}
+	public void addToPlayerAccountBalance(double addAmt){
+		playerAccountBalance += addAmt;
+	}
+	
+	public void subrtractFromPlayerAccountBalance(double subAmt){
+		playerAccountBalance -= subAmt;
 	}
 	
 	public static String promptForPlayerName( ) 

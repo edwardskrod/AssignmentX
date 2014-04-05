@@ -39,14 +39,19 @@ public class Payout {
 			break;
 		case BANANA:
 			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
+			break;
 		case BERRY:
 			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
+			break;
 		case GRAPE:
 			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
+			break;
 		case MELON:
 			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
+			break;
 		case LUCKY_SEVEN:
 			payoutPercentage = getLuckySevenPayout(sr1, sr2, sr3);
+			break;
 		case BLANK:
 			break;
 		default:
@@ -55,19 +60,22 @@ public class Payout {
 		if (payoutPercentage > 0) {
 			winner = true;
 		}
+		System.out.println("Payout percentage = " + getPayoutPercentage());
 	}
 
 	private double getBarPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
+		
 		double result = 0;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 1000.0;
+			System.out.println("All Bars equal");
+			result = 993.0;
 		} else if ((SpinResult.BAR_BAR.equals(sr2)
 				|| SpinResult.BAR_BAR_BAR.equals(sr2) || SpinResult.BAR
 					.equals(sr2))
 				&& (SpinResult.BAR_BAR.equals(sr2) || SpinResult.BAR_BAR_BAR
 						.equals(sr2)) || SpinResult.BAR.equals(sr3))
-			;
 		{
+			System.out.println("All not equal");
 			result = 35.0;
 		}
 		return result;
@@ -76,7 +84,7 @@ public class Payout {
 	private double getFruitPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
 		double result = 0;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 400.0;
+			result = 418.0;
 		} else if ((SpinResult.BANANA.equals(sr2)
 				|| SpinResult.BERRY.equals(sr2) || SpinResult.GRAPE.equals(sr2) || SpinResult.MELON
 					.equals(sr2))
@@ -84,9 +92,8 @@ public class Payout {
 						|| SpinResult.BERRY.equals(sr3)
 						|| SpinResult.GRAPE.equals(sr3) || SpinResult.MELON
 							.equals(sr3)))
-			;
 		{
-			result = 5.0;
+			result = 6.5;
 		}
 		return result;
 	}
@@ -95,7 +102,7 @@ public class Payout {
 			SpinResult sr3) {
 		double result = 0;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 3000.0;
+			result = 3352.0;
 		}
 		return result;
 	}

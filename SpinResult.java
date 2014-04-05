@@ -62,6 +62,10 @@ public enum SpinResult {
 		this.spinResult3 = spinResult3;
 		this.spinResult4 = spinResult4;
 	}
+	
+	public String getSpinName(){
+		return this.name;
+	}
 
 	public static SpinResult getSpinResult(int spin) {
 		SpinResult result = UNKNOWN;
@@ -73,8 +77,5 @@ public enum SpinResult {
 			}
 		}
 		return result;
-	}
-	public String getSpinName(){
-		return this.name;
 	}
 }

@@ -7,8 +7,6 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-
-
 public class FileHandler {
 	
 	private static BufferedReader in;
@@ -61,8 +59,6 @@ public class FileHandler {
 		// Save information to Player object
 		p.setPlayerName(playerName);
 		p.setPlayerAccountBalance(playerAccountBalance);
-		
-		
 	}
 	
 	public static void saveAccountInformation (Player p ) 
@@ -72,7 +68,7 @@ public class FileHandler {
 	 */
 	{
 		// Update the stringAccountBalance
-		stringAccountBalance = Integer.toString(p.getPlayerAccountBalance());
+		stringAccountBalance = Integer.toString((int)p.getPlayerAccountBalance());
 				
 		try {
 			out = new BufferedWriter (new FileWriter ( userFile ));
