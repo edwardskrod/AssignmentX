@@ -50,14 +50,14 @@ public class Board {
 				this.board[2][2].getSpinName());
 	}
 
-	public void setBoard(int x, int y, SpinResult s){
+	public void setBoardPosition(int x, int y, SpinResult s){
 		board[x][y] = s;
 	}
 
 	public SpinResult[][] getBoard(){
 		return board;
 	}
-	public SpinResult getBoard(int x, int y){
+	public SpinResult getBoardPosition(int x, int y){
 		return board[x][y];
 	}
 }

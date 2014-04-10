@@ -46,13 +46,15 @@ public class SlotMachine {
 				
 				play = new SlotMachineImpl(thePlayer);
 				System.out.println("Player account balance before bet = " + thePlayer.getPlayerAccountBalance());
-				play.spin(1);
+//				play.spin(1);
 				
 				//TODO clean up
-				System.out.println("b.board[one][two] = " +  play.getBoard(one, two).getSpinName());
-				System.out.println("b.board[three][four] = " + play.getBoard(three, four).getSpinName());
-				System.out.println("b.board[five][six] = " + play.getBoard(five, six).getSpinName());
-				System.out.println("isWiner = " + play.isWinner(play.getBoard(one, two), play.getBoard(three, four), play.getBoard(five, six)));
+				
+				//make 2d array
+				System.out.println("b.board[one][two] = " +  play.getBoardPosition(new int[]{one, two}).getSpinName());
+				System.out.println("b.board[three][four] = " + play.getBoardPosition(new int[]{three, four}).getSpinName());
+				System.out.println("b.board[five][six] = " + play.getBoardPosition(new int[]{five, six}).getSpinName());
+				System.out.println("isWiner = " + play.isWinner());
 				System.out.println("Payout = " + play.getPayout());
 				System.out.println("Player account balance after bet = " + thePlayer.getPlayerAccountBalance());
 
