@@ -64,7 +64,7 @@ public class SelectedRow {
 
 	public void toggleDiagOne() {
 		this.diagOne = !this.diagOne; // if selected deselect
-		if (topRow) {
+		if (diagOne) {
 			selections.put(DIAG_ONE_KEY, DIAG_ONE);
 		} else {
 			if (selections.containsKey(DIAG_ONE_KEY)) {
@@ -75,7 +75,7 @@ public class SelectedRow {
 
 	public void toggleDiagTwo() {
 		this.diagTwo = !this.diagTwo; // if selected deselect
-		if (topRow) {
+		if (diagTwo) {
 			selections.put(DIAG_TWO_KEY, DIAG_TWO);
 		} else {
 			if (selections.containsKey(DIAG_TWO_KEY)) {
