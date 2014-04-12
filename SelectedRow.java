@@ -2,7 +2,6 @@ package SlotMachine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class SelectedRow {
@@ -22,12 +21,13 @@ public class SelectedRow {
 	private static final String BOTTOM_ROW_KEY = "Bottom Row";
 	private static final String DIAG_ONE_KEY = "Diag One"; // top rt-bottom left
 	private static final String DIAG_TWO_KEY = "Diag Two"; // top left-bottom rt
-	private boolean topRow = false;
-	private boolean middleRow = false;
-	private boolean bottomRow = false;
-	private boolean diagOne = false;
-	private boolean diagTwo = false;
 	private Map<String, int[][]> selections = new HashMap<String, int[][]>();
+
+	private boolean topRow, middleRow, bottomRow, diagOne, diagTwo;
+
+	public SelectedRow() {
+		init();
+	}
 
 	public void toggleTopRow() {
 		this.topRow = !this.topRow; // if selected deselect
@@ -92,40 +92,27 @@ public class SelectedRow {
 		return topRow;
 	}
 
-	public void setTopRow(boolean topRow) {
-		this.topRow = topRow;
-	}
-
 	public boolean isMiddleRow() {
 		return middleRow;
-	}
-
-	public void setMiddleRow(boolean middleRow) {
-		this.middleRow = middleRow;
 	}
 
 	public boolean isBottomRow() {
 		return bottomRow;
 	}
 
-	public void setBottomRow(boolean bottomRow) {
-		this.bottomRow = bottomRow;
-	}
-
 	public boolean isDiagOne() {
 		return diagOne;
-	}
-
-	public void setDiagOne(boolean diagOne) {
-		this.diagOne = diagOne;
 	}
 
 	public boolean isDiagTwo() {
 		return diagTwo;
 	}
 
-	public void setDiagTwo(boolean diagTwo) {
-		this.diagTwo = diagTwo;
+	private void init() {
+		topRow = false;
+		middleRow = false;
+		bottomRow = false;
+		diagOne = false;
+		diagTwo = false;
 	}
-
 }
