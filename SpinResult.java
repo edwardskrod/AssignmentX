@@ -5,17 +5,20 @@ package SlotMachine;
 * This function receives an integer from 0 - 30 
 * The number corresponds to a number on the reel, 0 - 8.
 * Odds:				    Odds of getting 3 in a row		  				 Payout:
-* LUCKY7:    2 / 31     Odds of 3:  8 / 29,791   	1 / 3723    		 90% =  $3,352
-* BAR:       3 / 31     Odds of 3:  27 / 29,791  	1 / 1103			 90% =  $993
-* BARBAR:    3 / 31     Odds of 3:  27 / 29,791  	1 / 1103             90% =  $993
-* BARBARBAR: 3 / 31     Odds of 3:  27 / 29,791  	1 / 1103             90% =  $993
-* Any BAR:   9 / 31     Odds of 3: 729 / 29,791		1 / 40.86	   		 90% =  $36	 
-* MELON:	 4 / 31     Odds of 3:  64 / 29,791		1 / 465.48	   		 90% = $418
-* GRAPE		 4 / 31     Odds of 3:  64 / 29,791		1 / 465.48	   		 90% = $418
-* STRAWBERRY 4 / 31     Odds of 3:  64 / 29,791		1 / 465.48	   		 90% = $418
-* BANANA     4 / 31     Odds of 3:  64 / 29,791		1 / 465.48	   		 90% = $418
-* Any Fruit: 16/31      Odds of 3: 4096 / 29,791	1 / 7.27			 90% = $6.5
-* BLANK      4 / 31     Odds of getting 3  64 / 29,791
+* 
+* 12,167
+* 
+* JAVA       2 / 23     Odds of 3:	  8 / 12,167    1 / 1520	$1350
+* LUCKY7     3 / 23     Odds of 3:   27 / 12,167    1 / 450     $405
+* BARBARBAR: 4 / 23     Odds of 3:   64 / 12,167  	1 / 190     $171
+* BARBAR:    5 / 23     Odds of 3:  125 / 12,167  	1 / 97      $87
+* BAR:       6 / 23     Odds of 3:  216 / 12,167  	1 / 56.32	$50
+* Any BAR:   15 / 23    Odds of 3: 3375 / 12167   	1 / 3.6	   	$3	 
+* BLANK      3 / 23     Odds of 3:   27 / 12,167	1 / 450     nothing
+* 
+* 
+* 
+* 
 */
 
 public enum SpinResult {
