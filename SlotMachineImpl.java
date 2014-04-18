@@ -23,9 +23,10 @@ public class SlotMachineImpl {
 	}
 
 	public void spin(int betAmt, Map<String, int[][]> userSelections) {
-		
+
 		this.userSelections = userSelections;
-		System.out.println("userSelections.isEmpty() = " + userSelections.isEmpty());
+		System.out.println("userSelections.isEmpty() = "
+				+ userSelections.isEmpty());
 		this.betAmt = betAmt;
 		System.out.println(this.betAmt);
 
@@ -40,10 +41,12 @@ public class SlotMachineImpl {
 			setWin(getRow(singleRow));
 			linesSelected++;
 		}
-		System.out.println("this.betAmt * userSelections.size() = " + this.betAmt * userSelections.size());
-		thePlayer.subrtractFromPlayerAccountBalance((int) this.betAmt * userSelections.size());
+		System.out.println("this.betAmt * userSelections.size() = "
+				+ this.betAmt * userSelections.size());
+		thePlayer.subrtractFromPlayerAccountBalance((int) this.betAmt
+				* userSelections.size());
 
-		if (isWinner()){
+		if (isWinner()) {
 			thePlayer.addToPlayerAccountBalance(this.payout);
 			thePlayer.addToPlayerAccountBalance(this.betAmt);
 		}
@@ -54,10 +57,10 @@ public class SlotMachineImpl {
 		return this.winner;
 	}
 
-//	private void setPayout(SpinResult result1, SpinResult result2,
-//			SpinResult result3) {
-//
-//	}
+	// private void setPayout(SpinResult result1, SpinResult result2,
+	// SpinResult result3) {
+	//
+	// }
 
 	private void setWin(SpinResult[] spinResult) {
 		setWin(spinResult[0], spinResult[1], spinResult[2]);
@@ -85,15 +88,10 @@ public class SlotMachineImpl {
 	}
 
 	private void generateSpinAndSetBoard() {
-		Random r = new Random();
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 3; ++j) {
-				int num = r.nextInt(1000000);
-				num = num % 24;
-
-				// Call the method that maps the virtual machine
-				// to the regular machine
-				SpinResult spinResult = SpinResult.getSpinResult(num);
+				SpinResult spinResult = SlotMachineConstants
+						.getRandSpinResult();
 				theBoard.setBoardPosition(i, j, spinResult);
 			} // end inner for loop
 		} // end outer for loop
@@ -118,9 +116,12 @@ public class SlotMachineImpl {
 
 	public SpinResult[] getRow(int[][] selection) {
 		SpinResult[] winningCombo = new SpinResult[3];
-		winningCombo[0] = theBoard.getBoardPosition(selection[0][0], selection[0][1]);
-		winningCombo[1] = theBoard.getBoardPosition(selection[1][0], selection[1][1]);
-		winningCombo[2] = theBoard.getBoardPosition(selection[2][0], selection[2][1]);
+		winningCombo[0] = theBoard.getBoardPosition(selection[0][0],
+				selection[0][1]);
+		winningCombo[1] = theBoard.getBoardPosition(selection[1][0],
+				selection[1][1]);
+		winningCombo[2] = theBoard.getBoardPosition(selection[2][0],
+				selection[2][1]);
 
 		return winningCombo;
 	}
