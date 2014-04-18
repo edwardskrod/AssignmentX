@@ -23,9 +23,12 @@ public class SlotMachineImpl {
 	}
 
 	public void spin(int betAmt, Map<String, int[][]> userSelections) {
+		
 		this.userSelections = userSelections;
 		System.out.println("userSelections.isEmpty() = " + userSelections.isEmpty());
 		this.betAmt = betAmt;
+		System.out.println(this.betAmt);
+
 		int linesSelected = 1;
 		SpinResult position1, position2, position3;
 		generateSpinAndSetBoard();
@@ -43,7 +46,6 @@ public class SlotMachineImpl {
 		if (isWinner()){
 			thePlayer.addToPlayerAccountBalance(this.payout);
 			thePlayer.addToPlayerAccountBalance(this.betAmt);
-
 		}
 
 	} // end spin()
@@ -87,7 +89,7 @@ public class SlotMachineImpl {
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 3; ++j) {
 				int num = r.nextInt(1000000);
-				num = num % 31;
+				num = num % 24;
 
 				// Call the method that maps the virtual machine
 				// to the regular machine
@@ -103,10 +105,6 @@ public class SlotMachineImpl {
 
 	public SpinResult[][] getBoard() {
 		return theBoard.getBoard();
-	}
-
-	public SpinResult getBoard(int x, int y) {
-		return theBoard.getBoardPosition(x, y);
 	}
 
 	public SpinResult getBoardPosition(int[] xy) {

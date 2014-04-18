@@ -29,26 +29,16 @@ public class Payout {
 		payoutPercentage = 0;
 		switch (sr1) {
 		case BAR:
-			payoutPercentage = getBarPayout(sr1, sr2, sr3);
+			payoutPercentage = getSingleBarPayout(sr1, sr2, sr3);
 			break;
 		case BAR_BAR:
-			payoutPercentage = getBarPayout(sr1, sr2, sr3);
+			payoutPercentage = getDoubleBarPayout(sr1, sr2, sr3);
 			break;
 		case BAR_BAR_BAR:
-			payoutPercentage = getBarPayout(sr1, sr2, sr3);
+			payoutPercentage = getTripleBarPayout(sr1, sr2, sr3);
 			break;
-		case BANANA:
-			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
-			break;
-		case BERRY:
-			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
-			break;
-		case GRAPE:
-			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
-			break;
-		case MELON:
-			payoutPercentage = getFruitPayout(sr1, sr2, sr3);
-			break;
+		case JAVA:
+			payoutPercentage = getJavaPayout(sr1, sr2, sr3);
 		case LUCKY_SEVEN:
 			payoutPercentage = getLuckySevenPayout(sr1, sr2, sr3);
 			break;
@@ -63,37 +53,59 @@ public class Payout {
 		System.out.println("Payout percentage = " + getPayoutPercentage());
 	}
 
-	private double getBarPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
-		
+	private double getSingleBarPayout(SpinResult sr1, SpinResult sr2,
+			SpinResult sr3) {
 		double result = 0;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			System.out.println("All Bars equal");
-			result = 993.0;
-		} else if ((SpinResult.BAR_BAR.equals(sr2)
-				|| SpinResult.BAR_BAR_BAR.equals(sr2) || SpinResult.BAR
-					.equals(sr2))
-				&& (SpinResult.BAR_BAR.equals(sr2) || SpinResult.BAR_BAR_BAR
-						.equals(sr2)) || SpinResult.BAR.equals(sr3))
-		{
-			System.out.println("All not equal");
-			result = 35.0;
+			result = 50.0;
+		} else {
+			result = getBarPayout(sr1, sr2, sr3);
 		}
 		return result;
 	}
 
-	private double getFruitPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
+	private double getDoubleBarPayout(SpinResult sr1, SpinResult sr2,
+			SpinResult sr3) {
 		double result = 0;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 418.0;
-		} else if ((SpinResult.BANANA.equals(sr2)
-				|| SpinResult.BERRY.equals(sr2) || SpinResult.GRAPE.equals(sr2) || SpinResult.MELON
-					.equals(sr2))
-				&& (SpinResult.BANANA.equals(sr3)
-						|| SpinResult.BERRY.equals(sr3)
-						|| SpinResult.GRAPE.equals(sr3) || SpinResult.MELON
-							.equals(sr3)))
-		{
-			result = 6.5;
+			result = 80.0;
+		} else {
+			result = getBarPayout(sr1, sr2, sr3);
+		}
+		return result;
+	}
+
+	private double getTripleBarPayout(SpinResult sr1, SpinResult sr2,
+			SpinResult sr3) {
+		double result = 0;
+		if (sr1.equals(sr2) && sr2.equals(sr3)) {
+			result = 150.0;
+			System.out.println("Payout from tripleBar");
+		} else {
+			result = getBarPayout(sr1, sr2, sr3);
+		}
+		return result;
+	}
+
+	private double getBarPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
+		double result = 0;
+		if ((SpinResult.BAR_BAR.equals(sr2)
+				|| SpinResult.BAR_BAR_BAR.equals(sr2) || SpinResult.BAR
+					.equals(sr2))) {
+			if ((SpinResult.BAR_BAR.equals(sr3) || SpinResult.BAR_BAR_BAR
+					.equals(sr3)) || SpinResult.BAR.equals(sr3)) {
+				result = 3.0;
+			}
+
+			System.out.println("All not equal");
+		}
+		return result;
+	}
+
+	private double getJavaPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
+		double result = 0;
+		if (sr1.equals(sr2) && sr2.equals(sr3)) {
+			result = 1300.0;
 		}
 		return result;
 	}
@@ -102,7 +114,7 @@ public class Payout {
 			SpinResult sr3) {
 		double result = 0;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 3352.0;
+			result = 400.0;
 		}
 		return result;
 	}
