@@ -127,6 +127,7 @@ public class SlotMachineGridBagFrame extends JFrame
 		// put the icons into Jlabels
 
 		// Populate the array of lables with Icons. Icons are named 1 - 36.jpg
+		
 		for (int lcv = 0; lcv < 64; ++lcv) {
 			String name;
 			if (lcv < 9) {
