@@ -20,12 +20,12 @@ public class AdapterMock {
 		SelectedRow row = new SelectedRow();
 		
 //		//There will be a button to the left of the top row
-//		row.toggleTopRow();
+		row.toggleTopRow();
 //		//There will be a button to the left of the top row
-//		row.toggleMiddleRow();
-//		row.toggleBottomRow();
-//		row.toggleDiagOne();
-//		row.toggleDiagTwo();
+		row.toggleMiddleRow();
+		row.toggleBottomRow();
+		row.toggleDiagOne();
+		row.toggleDiagTwo();
 //		row.toggleTopRow();
 //		//There will be a button to the left of the top row
 //		row.toggleMiddleRow();
