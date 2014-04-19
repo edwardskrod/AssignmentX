@@ -40,6 +40,7 @@ public class SlotMachineGridBagFrame extends JFrame
 	private Buttons buttons;
 	protected SelectedRow selections;
 	protected JTextArea accountValue;
+
 	public SlotMachineGridBagFrame() {
 
 		super("SlotMachineGridBagFrame");
@@ -206,11 +207,11 @@ public class SlotMachineGridBagFrame extends JFrame
 				++num;
 			}
 		}
-		
+
 		accountValue = new JTextArea("Account Value: ", 10, 5);
 		accountValue.setEditable(false);
-        addComponent(accountValue, 7, 0, 2, 1);
-        
+		addComponent(accountValue, 7, 0, 2, 1);
+
 	}
 
 	private void setInitialImages() {
@@ -554,7 +555,8 @@ public class SlotMachineGridBagFrame extends JFrame
 					|| (e.getComponent()
 							.equals(labels[SlotMachineConstants.SELECTION_SPIN_PART2]))) {
 				reelSpin();
-				accountValue.setText("Account Value: " + slot.getPlayerAccountBalance());
+				accountValue.setText("Account Value: "
+						+ slot.getPlayerAccountBalance());
 			} else {
 				System.out.println("elsed out");
 			}
