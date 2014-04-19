@@ -83,6 +83,7 @@ public class SelectedRow {
 			}
 		}
 	}
+	
 
 	public Map<String, int[][]> getData() {
 		return selections;

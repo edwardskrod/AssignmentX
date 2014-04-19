@@ -14,21 +14,11 @@ public class Board {
 	public void printBoard() {
 
 		final String divider = "------------";
-
-		// System.out.printf("%s", "Slot Machine:\n");
-		// System.out.println();
-		// System.out.printf("  %d | %d | %d\n",
-		// this.board[0][0],this.board[0][1],this.board[0][2] );
-		// System.out.printf("%s\n", divider);
-		// System.out.printf("  %d | %d | %d\n",
-		// this.board[1][0],this.board[1][1],this.board[1][2]);
-		// System.out.printf("%s\n", divider);
-		// System.out.printf("  %d | %d | %d\n\n",
-		// this.board[2][0],this.board[2][1],this.board[2][2]);
 	}
 
 	public void printBoardWithTokens() {
 
+		//FOR CONSOLE TESTING
 		final String divider = "------------";
 		final String divider2 = "-------------------------------------------------";
 

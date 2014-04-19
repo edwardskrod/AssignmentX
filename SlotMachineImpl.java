@@ -52,6 +52,10 @@ public class SlotMachineImpl {
 		}
 
 	} // end spin()
+	
+	public double getPlayerAccountBalance(){
+		return this.thePlayer.getPlayerAccountBalance();
+	}
 
 	public boolean isWinner() {
 		return this.winner;
