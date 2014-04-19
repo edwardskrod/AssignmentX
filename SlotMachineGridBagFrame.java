@@ -83,6 +83,7 @@ public class SlotMachineGridBagFrame extends JFrame
 			}
 			
 		    Icon icon = new ImageIcon (getClass().getResource( name ));
+
 			labels[lcv] = new JLabel();
 			labels[lcv].setIcon( icon );
 		}
@@ -109,7 +110,18 @@ public class SlotMachineGridBagFrame extends JFrame
 		// row 3, spaces 0, 1, 2
 		// row 4, spaces 0, 1, 2
 		
-	  
+		for (int i = 0 ; i < 100; i++){
+			
+		}
+//	    Icon icon = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+//		labels[10] = new JLabel();
+//		labels[9] = new JLabel();
+//		labels[11] = new JLabel();
+//		labels[10].setIcon( icon );
+//		labels[11].setIcon( icon );
+//		labels[12].setIcon( icon );
+//
+//
 		
 		
 		
@@ -139,8 +151,53 @@ public class SlotMachineGridBagFrame extends JFrame
 		
 	}
 	
-	
-	
-	
-	
+	private void setAll(){
+		setRowOne();
+		setRowTwo();
+		setRowThree();
+	}
+	private void setRowOne(){
+	    Icon icon = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+	    Icon icon2 = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+	    Icon icon3 = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+
+		labels[9] = new JLabel();
+		labels[10] = new JLabel();
+		labels[11] = new JLabel();
+		labels[9].setIcon( icon );
+		labels[10].setIcon( icon2 );
+		labels[11].setIcon( icon3 );
+	}
+	private void setRowTwo(){
+	    Icon icon = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+	    Icon icon2 = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+	    Icon icon3 = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+
+		labels[17] = new JLabel();
+		labels[18] = new JLabel();
+		labels[19] = new JLabel();
+		labels[17].setIcon( icon );
+		labels[18].setIcon( icon2 );
+		labels[19].setIcon( icon3 );
+
+	}
+	private void setRowThree(){
+	    Icon icon = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+	    Icon icon2 = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+	    Icon icon3 = new ImageIcon (getClass().getResource( SlotMachineConstants.getRandSpinResult().getBlurredIcon()));
+
+		labels[25] = new JLabel();
+		labels[26] = new JLabel();
+		labels[27] = new JLabel();
+		labels[25].setIcon( icon );
+		labels[26].setIcon( icon2 );
+		labels[27].setIcon( icon3 );
+
+	}
+	private void setRowTwo(Icon icon1, Icon icon2, Icon icon3){
+		
+	}
+	private void setRowThree(Icon icon1, Icon icon2, Icon icon3){
+		
+	}
 }
