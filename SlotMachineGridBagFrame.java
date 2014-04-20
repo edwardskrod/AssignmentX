@@ -105,8 +105,7 @@ public class SlotMachineGridBagFrame extends JFrame
 		// Create an editable, JEditorPane which will accept strings
 		// made out of HTML
 		accountValue = new JEditorPane("text/html", null);
-		accountValue.setText("<body style ='backgroundcolor=#F77517'>Account Value: "
-				+ player.getPlayerAccountBalance() + "</body>");
+		accountValue.setText( SlotMachineConstants.ACCOUNT_VALUE_HTML + player.getPlayerAccountBalance() + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
 		addComponent(accountValue, 7, 0, 2, 1);
 	} // end constructor
 
@@ -431,7 +430,7 @@ public class SlotMachineGridBagFrame extends JFrame
 				reelSpin();
 				long bal = (long) slot.getPlayerAccountBalance();
 				String balance = Long.toString(bal);
-				accountValue.setText("<b>Account Value: " + balance + "</b>");
+				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML + balance + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
 			
 			} else if (e.getComponent().equals(
 					labels[SlotMachineConstants.SELECTION_NEW_FILE])) {
@@ -451,7 +450,8 @@ public class SlotMachineGridBagFrame extends JFrame
 								+ player.getPlayerAccountBalance(),
 						"Welcome to JavaSlots!", JOptionPane.PLAIN_MESSAGE);
 				
-				accountValue.setText("<b>Account Value: " + player.getPlayerAccountBalance() + "</b>");
+				// Display the player's account balance with HTML
+				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML + player.getPlayerAccountBalance() + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
 			
 			} else {
 				System.out.println("elsed out");

@@ -52,6 +52,8 @@ public class SlotMachineConstants {
 	public static String STRING_BOTTOM_ROW_IMAGE_FALSE = "slotMachine_25.jpg";
 	public static String STRING_DIAG_TWO_IMAGE_FALSE = "slotMachine_33.jpg";
 
+	public static String ACCOUNT_VALUE_HTML = "<body style=\"background:#F77517;\"> <p style=\"color:white; font-family: sans-serif; font-size: 18px;\">Account Value: ";
+	public static String ACCOUNT_VALUE_HTML_END = "</p></body>"; 
 	public static SpinResult getRandSpinResult() {
 		Random r = new Random();
 		int num = r.nextInt(1000000);
