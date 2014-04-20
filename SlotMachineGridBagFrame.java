@@ -1,28 +1,22 @@
 package SlotMachine;
-
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.lang.reflect.InvocationTargetException;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-//import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-
+import javax.swing.JEditorPane;
 import java.io.*;
 
 import javax.swing.JFileChooser;
@@ -39,8 +33,9 @@ public class SlotMachineGridBagFrame extends JFrame
 	private JFileChooser fc;
 	private Buttons buttons;
 	protected SelectedRow selections;
-	protected JTextArea accountValue;
-
+	//protected JTextArea accountValue;
+	protected JEditorPane accountValue;
+	
 	public SlotMachineGridBagFrame() {
 
 		super("SlotMachineGridBagFrame");
@@ -208,8 +203,14 @@ public class SlotMachineGridBagFrame extends JFrame
 			}
 		}
 
-		accountValue = new JTextArea("Account Value: ", 10, 5);
-		accountValue.setEditable(false);
+		//accountValue = new JTextArea("Account Value: ", 10, 5);
+		
+		// Create an editable, JEditorPane which will accept strings
+		// made out of HTML
+		accountValue = new JEditorPane("text/html", null); 
+		accountValue.setText("<b>Account Value: " + player
+				.getPlayerAccountBalance() + "</b>" );
+		//accountValue.setEditable(false);
 		addComponent(accountValue, 7, 0, 2, 1);
 
 	}
@@ -555,8 +556,10 @@ public class SlotMachineGridBagFrame extends JFrame
 					|| (e.getComponent()
 							.equals(labels[SlotMachineConstants.SELECTION_SPIN_PART2]))) {
 				reelSpin();
-				accountValue.setText("Account Value: "
-						+ slot.getPlayerAccountBalance());
+				long bal = (long)slot.getPlayerAccountBalance();
+				String balance = Long.toString(bal);
+				accountValue.setText("<b>Account Value: "
+						+ balance + "</b>" );
 			} else {
 				System.out.println("elsed out");
 			}
