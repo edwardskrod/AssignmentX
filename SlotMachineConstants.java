@@ -27,6 +27,15 @@ public class SlotMachineConstants {
 	
 	public static int MAX_ROW_SIZE = 8;
 	public static int MAX_COLUMN_SIZE = 8;
+	
+	public static int GRID_BAG_SIZE = 64;
+	
+	public static int SPIN_200_TIMES = 200;
+	public static int LAST_SPIN = 199;
+	
+	public static int INDEX_ZERO = 0;
+	public static int INDEX_ONE = 1;
+	public static int INDEX_TWO = 2;
 
 
 

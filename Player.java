@@ -7,7 +7,6 @@ public class Player {
 	private String playerName;
 	private double playerAccountBalance;
 	
-	
 	// Default Constructor
 	Player ( ) {
 		
