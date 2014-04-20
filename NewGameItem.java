@@ -23,6 +23,7 @@ protected Player player;
 								+ "! Your beginning account balance is: $"
 								+ player.getPlayerAccountBalance(),
 						"Welcome to JavaSlots!", JOptionPane.PLAIN_MESSAGE);
+
 			}
 		});
 	}

@@ -21,6 +21,7 @@ public class SlotMachineConstants {
 	public static int SELECTION_DIAG_TWO = 32;
 	public static int SELECTION_SPIN_PART1 = 59;
 	public static int SELECTION_SPIN_PART2 = 60;
+	public static int SELECTION_NEW_FILE = 63;
 	
 	public static int SELECTION_ACCOUNT_VAL1 = 56;
 	public static int SELECTION_ACCOUNT_VAL2 = 57;

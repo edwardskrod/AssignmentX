@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.JEditorPane;
 
@@ -31,6 +32,7 @@ public class SlotMachineGridBagFrame extends JFrame
 	private NewGameItem newGameItem;
 	private SaveItem saveItem;
 	private LoadItem loadItem;
+	private QuitItem quitItem;
 	protected SelectedRow selections;
 	protected JEditorPane accountValue;
 
@@ -55,7 +57,10 @@ public class SlotMachineGridBagFrame extends JFrame
 		// Create Save Game menu item
 		saveItem = new SaveItem(player, this, fc);
 		fileMenu.add(saveItem);
-
+		
+		quitItem = new QuitItem();
+		fileMenu.add(quitItem);
+		
 		JMenuBar bar = new JMenuBar(); // Create the menu bar
 		setJMenuBar(bar);
 		bar.add(fileMenu);
@@ -100,8 +105,8 @@ public class SlotMachineGridBagFrame extends JFrame
 		// Create an editable, JEditorPane which will accept strings
 		// made out of HTML
 		accountValue = new JEditorPane("text/html", null);
-		accountValue.setText("<b>Account Value: "
-				+ player.getPlayerAccountBalance() + "</b>");
+		accountValue.setText("<body style ='backgroundcolor=#F77517'>Account Value: "
+				+ player.getPlayerAccountBalance() + "</body>");
 		addComponent(accountValue, 7, 0, 2, 1);
 	} // end constructor
 
@@ -140,6 +145,8 @@ public class SlotMachineGridBagFrame extends JFrame
 		labels[SlotMachineConstants.SELECTION_SPIN_PART1]
 				.addMouseListener(buttons);
 		labels[SlotMachineConstants.SELECTION_SPIN_PART2]
+				.addMouseListener(buttons);
+		labels[SlotMachineConstants.SELECTION_NEW_FILE]
 				.addMouseListener(buttons);
 	}
 
@@ -425,6 +432,27 @@ public class SlotMachineGridBagFrame extends JFrame
 				long bal = (long) slot.getPlayerAccountBalance();
 				String balance = Long.toString(bal);
 				accountValue.setText("<b>Account Value: " + balance + "</b>");
+			
+			} else if (e.getComponent().equals(
+					labels[SlotMachineConstants.SELECTION_NEW_FILE])) {
+				
+				
+				//  THIS IS BAD SYSTEM DESIGN - EDWARD
+				// I am repeating code from the NewGameItem.java file.
+				// However, I don't know how to call the actionlistener in 
+				// NewGameItem from here.
+				
+				// Instantiate a new Player
+				player.setPlayerName(Player.promptForPlayerName());
+				player.setPlayerAccountBalance(100);
+				JOptionPane.showMessageDialog(null,
+						"Welcome to JavaSlots " + player.getPlayerName()
+								+ "! Your beginning account balance is: $"
+								+ player.getPlayerAccountBalance(),
+						"Welcome to JavaSlots!", JOptionPane.PLAIN_MESSAGE);
+				
+				accountValue.setText("<b>Account Value: " + player.getPlayerAccountBalance() + "</b>");
+			
 			} else {
 				System.out.println("elsed out");
 			}
