@@ -5,28 +5,15 @@ import javax.swing.ImageIcon;
 
 /*  We are using a virtual reel in order to more accurately control the
 * probability of getting any three numbers.  
-* This function receives an integer from 0 - 30 
+* This function receives an integer from 0 - 23 
 * The number corresponds to a number on the reel, 0 - 8.
-* Odds:				    Odds of getting 3 in a row		  				 Payout:
-* 
-* 12,167
-* 
-* JAVA       2 / 23     Odds of 3:
-8 / 12,167    1 / 1520
-$1300
-//* LUCKY7     3 / 23     Odds of 3:   
-//27 / 12,167    1 / 450    
- $400
-* BARBARBAR: 4 / 23     Odds of 3:   
-64 / 12,167  1 / 190    
- $150
-* BARBAR:    5 / 23     Odds of 3:  
-125 / 12,167  1 / 97        $80
-* BAR:       6 / 23     Odds of 3:  
-216 / 12,167  1 / 56.32
-  $50
-* BLANK      3 / 23     Odds of 3:   
-27 / 12,167 1 / 450       nothing
+*            Odds:	    Odds of getting 3 	Payout:
+* JAVA       2 / 23      1 / 1520       	$1300
+* LUCKY7     3 / 23        1 / 450         	$400
+* BARBARBAR: 4 / 23      1 / 190     	    $150
+* BARBAR:    5 / 23      1 / 97              $80
+* BAR:       6 / 23      1 / 56.32           $50
+* BLANK      3 / 23      1 / 450          nothing
 */
 
 

@@ -2,19 +2,28 @@ package SlotMachine;
 
 public class Payout {
 
-	/*
-	 * There are 10 payout levels This Class allows us to edit the payout
-	 * amounts quickly 1 - Lucky7 Lucky7 Lucky7 2 - BAR BAR BAR 3 - BARBAR
-	 * BARBAR BARBAR 4 - BARBARBAR BARBARBAR BARABARBAR 5 - Any 3 BARs 6 - MELON
-	 * MELON MELON 7 - GRAPE GRAPE GRAPE 8 - BERRY BERRY BERRY 9 - BANANA BANANA
-	 * BANANA 10 - Any 3 Fruits
-	 * 
-	 * Odds of 3 Payout: LUCKY7: 1 / 3723 90% = $3,352 BAR: 1 / 1103 90% = $993
-	 * BARBAR: 1 / 1103 90% = $993 BARBARBAR: 1 / 1103 90% = $993 Any BAR: 1 /
-	 * 40.86 90% = $36 MELON: 1 / 465.48 90% = $418 GRAPE 1 / 465.48 90% = $418
-	 * STRAWBERRY 1 / 465.48 90% = $418 BANANA 1 / 465.48 90% = $418 Any Fruit 1
-	 * / 7.27 90% = $6.5
-	 */
+/*
+* There are 6 payout levels This Class allows us to edit the payout
+* amounts quickly 
+* 1 - Java Java Java 
+* 2- Lucky7 Lucky7 Lucky7 
+* 3 - BARBARBAR BARBARBAR BARABARBAR 
+ * 4 - BARBAR BARBAR BARBAR 
+* 5 - BAR BAR BAR 	 
+* 6 - Any 3 BARs 
+* 
+* We are using a virtual reel in order to more accurately control the
+* probability of getting any three numbers.  
+* This function receives an integer from 0 - 23 
+* The number corresponds to a number on the reel, 0 - 8.
+*            Odds:	    Odds of getting 3 	Payout:
+* JAVA       2 / 23      1 / 1520       	$1300
+* LUCKY7     3 / 23        1 / 450         	$400
+* BARBARBAR: 4 / 23      1 / 190     	    $150
+* BARBAR:    5 / 23      1 / 97              $80
+* BAR:       6 / 23      1 / 56.32           $50
+* BLANK      3 / 23      1 / 450          nothing
+ */
 
 	private double payoutPercentage;
 	boolean winner;
