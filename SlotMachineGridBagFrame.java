@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,11 +15,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.JEditorPane;
-
 import javax.swing.JFileChooser;
 
 public class SlotMachineGridBagFrame extends JFrame
-
 {
 	private SlotMachineImpl slot;
 	private GridBagLayout slotMachineLayout; // layout of this frame
@@ -109,6 +108,7 @@ public class SlotMachineGridBagFrame extends JFrame
 		addComponent(accountValue, 7, 0, 2, 1);
 	} // end constructor
 
+	
 	private void setInitialImages() {
 		labels[SlotMachineConstants.GB_TOP_LEFT].setIcon(new ImageIcon(
 				getClass().getResource(SpinResult.JAVA.getIcon())));
@@ -329,7 +329,7 @@ public class SlotMachineGridBagFrame extends JFrame
 		return this.stringAccountBalance;
 	}
 
-	private class Buttons implements MouseListener {
+	private class Buttons implements MouseListener, MouseMotionListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -431,7 +431,9 @@ public class SlotMachineGridBagFrame extends JFrame
 				long bal = (long) slot.getPlayerAccountBalance();
 				String balance = Long.toString(bal);
 				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML + balance + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-			
+				
+				repaint();
+				
 			} else if (e.getComponent().equals(
 					labels[SlotMachineConstants.SELECTION_NEW_FILE])) {
 				
@@ -483,6 +485,17 @@ public class SlotMachineGridBagFrame extends JFrame
 
 		}
 
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+		@Override
+		public void mouseMoved(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+
+		}
 	}
 
 	public static void main(String[] args) {
