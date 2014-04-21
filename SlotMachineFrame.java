@@ -36,7 +36,7 @@ public class SlotMachineFrame extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);
-		row = new SelectedRow();
+		row = new SelectedRow(thePlayer);
 		add(panel);
 	}
 

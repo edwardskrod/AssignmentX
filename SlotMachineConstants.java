@@ -3,6 +3,7 @@ package SlotMachine;
 import java.util.Random;
 
 public class SlotMachineConstants {
+	public static int DEFAULT_STARTING_BALANCE = 100;
 
 	public static int GB_TOP_LEFT = 9;
 	public static int GB_TOP_MIDDLE = 10;

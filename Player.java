@@ -53,6 +53,13 @@ public class Player {
 		return name;
 	}
 	
+	public void incrementAccountBalance(){
+		playerAccountBalance++;
+	}
+	public void decrementAccountBalance(){
+		playerAccountBalance--;
+	}
+	
 	public void printPlayerInfo( ) {
 		
 		System.out.println("Player Name: " + getPlayerName() );

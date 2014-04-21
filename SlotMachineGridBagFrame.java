@@ -17,8 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 
-public class SlotMachineGridBagFrame extends JFrame
-{
+public class SlotMachineGridBagFrame extends JFrame {
 	private SlotMachineImpl slot;
 	private GridBagLayout slotMachineLayout; // layout of this frame
 	private GridBagConstraints constraints; // constraints of the layout
@@ -38,7 +37,7 @@ public class SlotMachineGridBagFrame extends JFrame
 	public SlotMachineGridBagFrame() {
 
 		super("SlotMachineGridBagFrame");
-		selections = new SelectedRow();
+		selections = new SelectedRow(player);
 		slotMachineLayout = new GridBagLayout();
 		setLayout(slotMachineLayout);
 		player = new Player();
@@ -56,10 +55,10 @@ public class SlotMachineGridBagFrame extends JFrame
 		// Create Save Game menu item
 		saveItem = new SaveItem(player, this, fc);
 		fileMenu.add(saveItem);
-		
+
 		quitItem = new QuitItem();
 		fileMenu.add(quitItem);
-		
+
 		JMenuBar bar = new JMenuBar(); // Create the menu bar
 		setJMenuBar(bar);
 		bar.add(fileMenu);
@@ -104,11 +103,12 @@ public class SlotMachineGridBagFrame extends JFrame
 		// Create an editable, JEditorPane which will accept strings
 		// made out of HTML
 		accountValue = new JEditorPane("text/html", null);
-		accountValue.setText( SlotMachineConstants.ACCOUNT_VALUE_HTML + player.getPlayerAccountBalance() + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+		accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+				+ player.getPlayerAccountBalance()
+				+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
 		addComponent(accountValue, 7, 0, 2, 1);
 	} // end constructor
 
-	
 	private void setInitialImages() {
 		labels[SlotMachineConstants.GB_TOP_LEFT].setIcon(new ImageIcon(
 				getClass().getResource(SpinResult.JAVA.getIcon())));
@@ -166,7 +166,35 @@ public class SlotMachineGridBagFrame extends JFrame
 			new Thread() {
 				public void run() {
 					for (int i = 0; i < SlotMachineConstants.SPIN_200_TIMES; i++) {
-						if (i == SlotMachineConstants.LAST_SPIN) {
+						if (i == 0) {
+							try {
+								SwingUtilities.invokeAndWait(new Runnable() {
+
+									@Override
+									public void run() {
+										long bal = (long) player
+												.getPlayerAccountBalance()
+												- (long) selections
+														.getBetCounter();
+										String balance = Long.toString(bal);
+										System.out.println(balance);
+
+										accountValue
+												.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+														+ balance
+														+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+										repaint();
+										try {
+											Thread.sleep(5);
+										} catch (InterruptedException e) {
+											e.printStackTrace();
+										}
+									}
+								});
+							} catch (Exception e) {
+
+							}
+						} else if (i == SlotMachineConstants.LAST_SPIN) {
 							try {
 								SwingUtilities.invokeAndWait(new Runnable() {
 
@@ -184,6 +212,32 @@ public class SlotMachineGridBagFrame extends JFrame
 							} catch (Exception e) {
 
 							}
+							try {
+								SwingUtilities.invokeAndWait(new Runnable() {
+
+									@Override
+									public void run() {
+										long bal = (long) player
+												.getPlayerAccountBalance();
+										String balance = Long.toString(bal);
+										System.out.println(balance);
+
+										accountValue
+												.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+														+ balance
+														+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+										repaint();
+										try {
+											Thread.sleep(5);
+										} catch (InterruptedException e) {
+											e.printStackTrace();
+										}
+									}
+								});
+							} catch (Exception e) {
+
+							}
+
 						} else {
 							try {
 								SwingUtilities.invokeAndWait(new Runnable() {
@@ -210,6 +264,13 @@ public class SlotMachineGridBagFrame extends JFrame
 			}.start();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			long bal = (long) slot.getPlayerAccountBalance();
+			String balance = Long.toString(bal);
+			accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+					+ balance + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+			repaint();
+
 		}
 	}
 
@@ -428,33 +489,28 @@ public class SlotMachineGridBagFrame extends JFrame
 					|| (e.getComponent()
 							.equals(labels[SlotMachineConstants.SELECTION_SPIN_PART2]))) {
 				reelSpin();
-				long bal = (long) slot.getPlayerAccountBalance();
-				String balance = Long.toString(bal);
-				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML + balance + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-				
-				repaint();
-				
 			} else if (e.getComponent().equals(
 					labels[SlotMachineConstants.SELECTION_NEW_FILE])) {
-				
-				
-				//  THIS IS BAD SYSTEM DESIGN - EDWARD
+
+				// THIS IS BAD SYSTEM DESIGN - EDWARD
 				// I am repeating code from the NewGameItem.java file.
-				// However, I don't know how to call the actionlistener in 
+				// However, I don't know how to call the actionlistener in
 				// NewGameItem from here.
-				
+
 				// Instantiate a new Player
 				player.setPlayerName(Player.promptForPlayerName());
-				player.setPlayerAccountBalance(100);
+				player.setPlayerAccountBalance(SlotMachineConstants.DEFAULT_STARTING_BALANCE);
 				JOptionPane.showMessageDialog(null,
 						"Welcome to JavaSlots " + player.getPlayerName()
 								+ "! Your beginning account balance is: $"
 								+ player.getPlayerAccountBalance(),
 						"Welcome to JavaSlots!", JOptionPane.PLAIN_MESSAGE);
-				
+
 				// Display the player's account balance with HTML
-				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML + player.getPlayerAccountBalance() + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-			
+				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+						+ player.getPlayerAccountBalance()
+						+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+
 			} else {
 				System.out.println("elsed out");
 			}
@@ -490,10 +546,10 @@ public class SlotMachineGridBagFrame extends JFrame
 			// TODO Auto-generated method stub
 
 		}
+
 		@Override
 		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
 
 		}
 	}

@@ -24,8 +24,10 @@ public class SelectedRow {
 	private Map<String, int[][]> selections = new HashMap<String, int[][]>();
 
 	private boolean topRow, middleRow, bottomRow, diagOne, diagTwo;
-
-	public SelectedRow() {
+	private static int betCounter;
+	
+	
+	public SelectedRow(Player player) {
 		init();
 	}
 
@@ -33,9 +35,12 @@ public class SelectedRow {
 		this.topRow = !this.topRow; // if selected deselect
 		if (topRow) {
 			selections.put(TOP_ROW_KEY, TOP_ROW);
+			betCounter++;
+			
 		} else {
 			if (selections.containsKey(TOP_ROW_KEY)) {
 				selections.remove(TOP_ROW_KEY);
+				betCounter--;
 			}
 		}
 	}
@@ -44,9 +49,11 @@ public class SelectedRow {
 		this.middleRow = !this.middleRow; // if selected deselect
 		if (this.middleRow) {
 			selections.put(MIDDLE_ROW_KEY, MIDDLE_ROW);
+			betCounter++;
 		} else {
 			if (selections.containsKey(MIDDLE_ROW_KEY)) {
 				selections.remove(MIDDLE_ROW_KEY);
+				betCounter--;
 			}
 		}
 	}
@@ -55,9 +62,11 @@ public class SelectedRow {
 		this.bottomRow = !this.bottomRow; // if selected deselect
 		if (bottomRow) {
 			selections.put(BOTTOM_ROW_KEY, BOTTOM_ROW);
+			betCounter++;
 		} else {
 			if (selections.containsKey(BOTTOM_ROW_KEY)) {
 				selections.remove(BOTTOM_ROW_KEY);
+				betCounter--;
 			}
 		}
 	}
@@ -66,9 +75,11 @@ public class SelectedRow {
 		this.diagOne = !this.diagOne; // if selected deselect
 		if (diagOne) {
 			selections.put(DIAG_ONE_KEY, DIAG_ONE);
+			betCounter++;
 		} else {
 			if (selections.containsKey(DIAG_ONE_KEY)) {
 				selections.remove(DIAG_ONE_KEY);
+				betCounter--;
 			}
 		}
 	}
@@ -77,9 +88,11 @@ public class SelectedRow {
 		this.diagTwo = !this.diagTwo; // if selected deselect
 		if (diagTwo) {
 			selections.put(DIAG_TWO_KEY, DIAG_TWO);
+			betCounter++;
 		} else {
 			if (selections.containsKey(DIAG_TWO_KEY)) {
 				selections.remove(DIAG_TWO_KEY);
+				betCounter--;
 			}
 		}
 	}
@@ -87,6 +100,9 @@ public class SelectedRow {
 
 	public Map<String, int[][]> getData() {
 		return selections;
+	}
+	public int getBetCounter(){
+		return betCounter;
 	}
 
 	public boolean isTopRow() {
@@ -110,6 +126,7 @@ public class SelectedRow {
 	}
 
 	private void init() {
+		betCounter = 0;
 		topRow = false;
 		middleRow = false;
 		bottomRow = false;

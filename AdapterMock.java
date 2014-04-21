@@ -17,7 +17,7 @@ public class AdapterMock {
 		 * row object will be called from event handler tied to UI
 		 */
 		
-		SelectedRow row = new SelectedRow();
+		SelectedRow row = new SelectedRow(new Player());
 		
 //		//There will be a button to the left of the top row
 		row.toggleTopRow();
