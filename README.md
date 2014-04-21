@@ -3,7 +3,9 @@ Jesse Hanna
 Edward Skrod
 April 24, 2014
 COP3252, Introduction to Java
+
 /******************    Implementation of a slot machine.    *********************/
+
 
 Usage Instructions:   Doubleclick the .jar file in Windows or run from the command line by typing java -jar SlotMachine.jar
 
