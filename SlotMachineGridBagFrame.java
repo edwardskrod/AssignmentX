@@ -22,7 +22,9 @@ public class SlotMachineGridBagFrame extends JFrame {
 	private GridBagLayout slotMachineLayout; // layout of this frame
 	private GridBagConstraints constraints; // constraints of the layout
 	private JLabel[] labels = new JLabel[64];
+
 	private String stringAccountBalance;
+	protected static boolean spin;
 	protected Player player;
 	private JFileChooser fc;
 	private Buttons buttons;
@@ -37,6 +39,7 @@ public class SlotMachineGridBagFrame extends JFrame {
 	public SlotMachineGridBagFrame() {
 
 		super("SlotMachineGridBagFrame");
+		spin = false;
 		selections = new SelectedRow(player);
 		slotMachineLayout = new GridBagLayout();
 		setLayout(slotMachineLayout);
@@ -45,7 +48,7 @@ public class SlotMachineGridBagFrame extends JFrame {
 		buttons = new Buttons();
 		fileMenu = new FileMenu();
 
-		newGameItem = new NewGameItem(player);
+		newGameItem = new NewGameItem(player, this);
 		fileMenu.add(newGameItem);
 		slot = new SlotMachineImpl(player);
 
@@ -160,117 +163,131 @@ public class SlotMachineGridBagFrame extends JFrame {
 		add(component);
 	}
 
+	public void setSpin(boolean spin) {
+		this.spin = spin;
+	}
+
 	private void reelSpin() {
+		System.out.println(spin);
+		if (spin) {
+			try {
+				new Thread() {
+					public void run() {
+						for (int i = 0; i < SlotMachineConstants.SPIN_200_TIMES; i++) {
+							if (i == 0) {
+								try {
+									SwingUtilities
+											.invokeAndWait(new Runnable() {
 
-		try {
-			new Thread() {
-				public void run() {
-					for (int i = 0; i < SlotMachineConstants.SPIN_200_TIMES; i++) {
-						if (i == 0) {
-							try {
-								SwingUtilities.invokeAndWait(new Runnable() {
+												@Override
+												public void run() {
+													long bal = (long) player
+															.getPlayerAccountBalance()
+															- (long) selections
+																	.getBetCounter();
+													String balance = Long
+															.toString(bal);
+													System.out.println(balance);
 
-									@Override
-									public void run() {
-										long bal = (long) player
-												.getPlayerAccountBalance()
-												- (long) selections
-														.getBetCounter();
-										String balance = Long.toString(bal);
-										System.out.println(balance);
+													accountValue
+															.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+																	+ balance
+																	+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+													repaint();
+													try {
+														Thread.sleep(5);
+													} catch (InterruptedException e) {
+														e.printStackTrace();
+													}
+												}
+											});
+								} catch (Exception e) {
 
-										accountValue
-												.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
-														+ balance
-														+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-										repaint();
-										try {
-											Thread.sleep(5);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
-										}
-									}
-								});
-							} catch (Exception e) {
+								}
+							} else if (i == SlotMachineConstants.LAST_SPIN) {
+								try {
+									SwingUtilities
+											.invokeAndWait(new Runnable() {
 
-							}
-						} else if (i == SlotMachineConstants.LAST_SPIN) {
-							try {
-								SwingUtilities.invokeAndWait(new Runnable() {
+												@Override
+												public void run() {
+													realSpinResults();
+													repaint();
+													try {
+														Thread.sleep(5);
+													} catch (InterruptedException e) {
+														e.printStackTrace();
+													}
+												}
+											});
+								} catch (Exception e) {
 
-									@Override
-									public void run() {
-										realSpinResults();
-										repaint();
-										try {
-											Thread.sleep(5);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
-										}
-									}
-								});
-							} catch (Exception e) {
+								}
+								try {
+									SwingUtilities
+											.invokeAndWait(new Runnable() {
 
-							}
-							try {
-								SwingUtilities.invokeAndWait(new Runnable() {
+												@Override
+												public void run() {
+													long bal = (long) player
+															.getPlayerAccountBalance();
+													String balance = Long
+															.toString(bal);
+													System.out.println(balance);
 
-									@Override
-									public void run() {
-										long bal = (long) player
-												.getPlayerAccountBalance();
-										String balance = Long.toString(bal);
-										System.out.println(balance);
+													accountValue
+															.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+																	+ balance
+																	+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+													repaint();
+													try {
+														Thread.sleep(5);
+													} catch (InterruptedException e) {
+														e.printStackTrace();
+													}
+												}
+											});
+								} catch (Exception e) {
 
-										accountValue
-												.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
-														+ balance
-														+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-										repaint();
-										try {
-											Thread.sleep(5);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
-										}
-									}
-								});
-							} catch (Exception e) {
+								}
 
-							}
+							} else {
+								try {
+									SwingUtilities
+											.invokeAndWait(new Runnable() {
 
-						} else {
-							try {
-								SwingUtilities.invokeAndWait(new Runnable() {
-
-									@Override
-									public void run() {
-										setAll();
-										repaint();
-										try {
-											Thread.sleep(5);
-										} catch (InterruptedException e) {
-											e.printStackTrace();
-										}
-									}
-								});
-							} catch (InvocationTargetException e) {
-								e.printStackTrace();
-							} catch (InterruptedException e) {
-								e.printStackTrace();
+												@Override
+												public void run() {
+													setAll();
+													repaint();
+													try {
+														Thread.sleep(5);
+													} catch (InterruptedException e) {
+														e.printStackTrace();
+													}
+												}
+											});
+								} catch (InvocationTargetException e) {
+									e.printStackTrace();
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
 							}
 						}
 					}
-				}
-			}.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			long bal = (long) slot.getPlayerAccountBalance();
-			String balance = Long.toString(bal);
-			accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
-					+ balance + SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-			repaint();
+				}.start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				long bal = (long) slot.getPlayerAccountBalance();
+				String balance = Long.toString(bal);
+				accountValue
+						.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
+								+ balance
+								+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+				repaint();
 
+			}
 		}
 	}
 
@@ -390,6 +407,23 @@ public class SlotMachineGridBagFrame extends JFrame {
 		return this.stringAccountBalance;
 	}
 
+	public void doRun() {
+		long bal = (long) player.getPlayerAccountBalance()
+				- (long) selections.getBetCounter();
+		String balance = Long.toString(bal);
+		System.out.println(balance);
+
+		accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML + balance
+				+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
+		repaint();
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	private class Buttons implements MouseListener, MouseMotionListener {
 
 		@Override
@@ -491,30 +525,10 @@ public class SlotMachineGridBagFrame extends JFrame {
 				reelSpin();
 			} else if (e.getComponent().equals(
 					labels[SlotMachineConstants.SELECTION_NEW_FILE])) {
-
-				// THIS IS BAD SYSTEM DESIGN - EDWARD
-				// I am repeating code from the NewGameItem.java file.
-				// However, I don't know how to call the actionlistener in
-				// NewGameItem from here.
-
-				// Instantiate a new Player
-				player.setPlayerName(Player.promptForPlayerName());
-				player.setPlayerAccountBalance(SlotMachineConstants.DEFAULT_STARTING_BALANCE);
-				JOptionPane.showMessageDialog(null,
-						"Welcome to JavaSlots " + player.getPlayerName()
-								+ "! Your beginning account balance is: $"
-								+ player.getPlayerAccountBalance(),
-						"Welcome to JavaSlots!", JOptionPane.PLAIN_MESSAGE);
-
-				// Display the player's account balance with HTML
-				accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
-						+ player.getPlayerAccountBalance()
-						+ SlotMachineConstants.ACCOUNT_VALUE_HTML_END);
-
+				newGameItem.newGame();
 			} else {
 				System.out.println("elsed out");
 			}
-			// repaint();
 		}
 
 		@Override

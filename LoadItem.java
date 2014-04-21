@@ -33,7 +33,7 @@ public class LoadItem extends JMenuItem{
 
 					// Update the stringAccountBalance
 					try {
-
+						frame.spin = true;
 						in = new BufferedReader(new FileReader(file));
 						String playerName = in.readLine();
 						player.setPlayerName(playerName);
@@ -51,6 +51,7 @@ public class LoadItem extends JMenuItem{
 										+ frame.getStringAccountBalance() + "\n",
 								"Welcome Back to JavaSlots!",
 								JOptionPane.PLAIN_MESSAGE);
+						frame.doRun();
 
 					} catch (IOException e) {
 						System.out
