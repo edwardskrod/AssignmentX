@@ -1,8 +1,13 @@
 AssignmentX
+
 Jesse Hanna
+
 Edward Skrod
+
 April 24, 2014
+
 COP3252, Introduction to Java
+
 
 /******************    Implementation of a slot machine.    *********************/
 
