@@ -39,7 +39,7 @@ public class SlotMachineConstants {
 	public static int INDEX_ONE = 1;
 	public static int INDEX_TWO = 2;
 
-	public static String IMAGES_URL = "images/";
+	public static String IMAGES_URL = "/images/";
 
 
 	public static String STRING_DIAG_ONE_IMAGE_TRUE = IMAGES_URL + "slotMachineSelected_01.jpg";
