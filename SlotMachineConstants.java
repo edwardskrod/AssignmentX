@@ -39,19 +39,20 @@ public class SlotMachineConstants {
 	public static int INDEX_ONE = 1;
 	public static int INDEX_TWO = 2;
 
+	public static String IMAGES_URL = "images/";
 
 
-	public static String STRING_DIAG_ONE_IMAGE_TRUE = "slotMachineSelected_01.jpg";
-	public static String STRING_TOP_ROW_IMAGE_TRUE = "slotMachineSelected_09.jpg";
-	public static String STRING_MIDDLE_ROW_IMAGE_TRUE = "slotMachineSelected_17.jpg";
-	public static String STRING_BOTTOM_ROW_IMAGE_TRUE = "slotMachineSelected_25.jpg";
-	public static String STRING_DIAG_TWO_IMAGE_TRUE = "slotMachineSelected_33.jpg";
+	public static String STRING_DIAG_ONE_IMAGE_TRUE = IMAGES_URL + "slotMachineSelected_01.jpg";
+	public static String STRING_TOP_ROW_IMAGE_TRUE = IMAGES_URL + "slotMachineSelected_09.jpg";
+	public static String STRING_MIDDLE_ROW_IMAGE_TRUE = IMAGES_URL + "slotMachineSelected_17.jpg";
+	public static String STRING_BOTTOM_ROW_IMAGE_TRUE = IMAGES_URL + "slotMachineSelected_25.jpg";
+	public static String STRING_DIAG_TWO_IMAGE_TRUE = IMAGES_URL + "slotMachineSelected_33.jpg";
 
-	public static String STRING_DIAG_ONE_IMAGE_FALSE = "slotMachine_01.jpg";
-	public static String STRING_TOP_ROW_IMAGE_FALSE = "slotMachine_09.jpg";
-	public static String STRING_MIDDLE_ROW_IMAGE_FALSE = "slotMachine_17.jpg";
-	public static String STRING_BOTTOM_ROW_IMAGE_FALSE = "slotMachine_25.jpg";
-	public static String STRING_DIAG_TWO_IMAGE_FALSE = "slotMachine_33.jpg";
+	public static String STRING_DIAG_ONE_IMAGE_FALSE = IMAGES_URL + "slotMachine_01.jpg";
+	public static String STRING_TOP_ROW_IMAGE_FALSE = IMAGES_URL + "slotMachine_09.jpg";
+	public static String STRING_MIDDLE_ROW_IMAGE_FALSE = IMAGES_URL + "slotMachine_17.jpg";
+	public static String STRING_BOTTOM_ROW_IMAGE_FALSE = IMAGES_URL + "slotMachine_25.jpg";
+	public static String STRING_DIAG_TWO_IMAGE_FALSE = IMAGES_URL + "slotMachine_33.jpg";
 
 	public static String ACCOUNT_VALUE_HTML = "<body style=\"background:#F77517;\"> <p style=\"padding:8px; color:white; font-family: sans-serif; font-size: 18px;\">Account Value: ";
 	public static String ACCOUNT_VALUE_HTML_END = "</p></body>"; 

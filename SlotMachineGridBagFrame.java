@@ -5,7 +5,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -75,9 +74,9 @@ public class SlotMachineGridBagFrame extends JFrame {
 		for (int lcv = 0; lcv < SlotMachineConstants.GRID_BAG_SIZE; ++lcv) {
 			String name;
 			if (lcv < 9) {
-				name = "slotMachine_0" + (lcv + 1) + ".jpg";
+				name = SlotMachineConstants.IMAGES_URL +"slotMachine_0" + (lcv + 1) + ".jpg";
 			} else {
-				name = "slotMachine_" + (lcv + 1) + ".jpg";
+				name = SlotMachineConstants.IMAGES_URL + "slotMachine_" + (lcv + 1) + ".jpg";
 			}
 			Icon icon = new ImageIcon(getClass().getResource(name));
 			labels[lcv] = new JLabel();
@@ -424,7 +423,7 @@ public class SlotMachineGridBagFrame extends JFrame {
 
 	}
 
-	private class Buttons implements MouseListener, MouseMotionListener {
+	private class Buttons implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -555,17 +554,7 @@ public class SlotMachineGridBagFrame extends JFrame {
 
 		}
 
-		@Override
-		public void mouseDragged(MouseEvent e) {
-			// TODO Auto-generated method stub
 
-		}
-
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
 	}
 
 	public static void main(String[] args) {
