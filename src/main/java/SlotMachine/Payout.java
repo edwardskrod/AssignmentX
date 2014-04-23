@@ -1,7 +1,5 @@
 package SlotMachine;
 
-public class Payout {
-
 /*
 * There are 6 payout levels This Class allows us to edit the payout
 * amounts quickly 
@@ -16,6 +14,7 @@ public class Payout {
 * probability of getting any three numbers.  
 * This function receives an integer from 0 - 23 
 * The number corresponds to a number on the reel, 0 - 8.
+* 
 *            Odds:	    Odds of getting 3 	Payout:
 * JAVA       2 / 23      1 / 1520       	$1300
 * LUCKY7     3 / 23        1 / 450         	$400
@@ -25,17 +24,19 @@ public class Payout {
 * BLANK      3 / 23      1 / 450          nothing
  */
 
+public class Payout {
+
 	private double payoutPercentage;
 	boolean winner;
 
 	Payout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
-		payoutPercentage = 0;
+		payoutPercentage = SlotMachineConstants.ZERO;
 		winner = false;
 		setPayout(sr1, sr2, sr3);
 	}
 
 	public void setPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
-		payoutPercentage = 0;
+		payoutPercentage = SlotMachineConstants.ZERO;
 		switch (sr1) {
 		case BAR:
 			payoutPercentage = getSingleBarPayout(sr1, sr2, sr3);
@@ -56,17 +57,18 @@ public class Payout {
 		default:
 			break;
 		}
-		if (payoutPercentage > 0) {
+		if (payoutPercentage > SlotMachineConstants.ZERO) {
 			winner = true;
 		}
 		System.out.println("Payout percentage = " + getPayoutPercentage());
 	}
 
+	
 	private double getSingleBarPayout(SpinResult sr1, SpinResult sr2,
 			SpinResult sr3) {
-		double result = 0;
+		double result = SlotMachineConstants.ZERO;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 50.0;
+			result = SlotMachineConstants.BAR_PAYOUT;
 		} else {
 			result = getBarPayout(sr1, sr2, sr3);
 		}
@@ -75,9 +77,9 @@ public class Payout {
 
 	private double getDoubleBarPayout(SpinResult sr1, SpinResult sr2,
 			SpinResult sr3) {
-		double result = 0;
+		double result = SlotMachineConstants.ZERO;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 80.0;
+			result = SlotMachineConstants.BAR_BAR_PAYOUT;
 		} else {
 			result = getBarPayout(sr1, sr2, sr3);
 		}
@@ -86,9 +88,9 @@ public class Payout {
 
 	private double getTripleBarPayout(SpinResult sr1, SpinResult sr2,
 			SpinResult sr3) {
-		double result = 0;
+		double result = SlotMachineConstants.ZERO;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 150.0;
+			result = SlotMachineConstants.BAR_BAR_BAR_PAYOUT;
 			System.out.println("Payout from tripleBar");
 		} else {
 			result = getBarPayout(sr1, sr2, sr3);
@@ -97,13 +99,13 @@ public class Payout {
 	}
 
 	private double getBarPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
-		double result = 0;
+		double result = SlotMachineConstants.ZERO;
 		if ((SpinResult.BAR_BAR.equals(sr2)
 				|| SpinResult.BAR_BAR_BAR.equals(sr2) || SpinResult.BAR
 					.equals(sr2))) {
 			if ((SpinResult.BAR_BAR.equals(sr3) || SpinResult.BAR_BAR_BAR
 					.equals(sr3)) || SpinResult.BAR.equals(sr3)) {
-				result = 3.0;
+				result = SlotMachineConstants.ANY_BAR_PAYOUT;
 			}
 
 			System.out.println("All not equal");
@@ -112,18 +114,18 @@ public class Payout {
 	}
 
 	private double getJavaPayout(SpinResult sr1, SpinResult sr2, SpinResult sr3) {
-		double result = 0;
+		double result = SlotMachineConstants.ZERO;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 1300.0;
+			result = SlotMachineConstants.JAVA_PAYOUT;
 		}
 		return result;
 	}
 
 	private double getLuckySevenPayout(SpinResult sr1, SpinResult sr2,
 			SpinResult sr3) {
-		double result = 0;
+		double result = SlotMachineConstants.ZERO;
 		if (sr1.equals(sr2) && sr2.equals(sr3)) {
-			result = 400.0;
+			result = SlotMachineConstants.LUCKY7_PAYOUT;
 		}
 		return result;
 	}
@@ -135,6 +137,4 @@ public class Payout {
 	public double getPayoutPercentage() {
 		return payoutPercentage;
 	}
-
-	// private static boolean checkForBar()
 }

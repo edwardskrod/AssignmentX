@@ -61,16 +61,18 @@ public class SlotMachineGridBagFrame extends JFrame {
 		quitItem = new QuitItem();
 		fileMenu.add(quitItem);
 
-		JMenuBar bar = new JMenuBar(); // Create the menu bar
+		JMenuBar bar = new JMenuBar(); 
 		setJMenuBar(bar);
 		bar.add(fileMenu);
 		constraints = new GridBagConstraints();
 
-		// Add the icons 1 - 64 25.9 Layout Managers: BoxLayout and
-		// GridBagLayout 1035
-		// put the icons into Jlabels
-		// Populate the array of lables with Icons. Icons are named 1 - 36.jpg
-
+		/*
+		 * Add the icons 1 - 64
+		 * Seat each Icon as a JLabel
+		 * Populate the lables array with the JLabel Icons
+		 * 
+		 * 
+		 */
 		for (int lcv = 0; lcv < SlotMachineConstants.GRID_BAG_SIZE; ++lcv) {
 			String name;
 			if (lcv < 9) {
@@ -102,8 +104,10 @@ public class SlotMachineGridBagFrame extends JFrame {
 			}
 		}
 
-		// Create an editable, JEditorPane which will accept strings
-		// made out of HTML
+		/*
+		 * Create an editable, JEditorPane which will accept strings
+		 * with HTML
+		 */
 		accountValue = new JEditorPane("text/html", null);
 		accountValue.setText(SlotMachineConstants.ACCOUNT_VALUE_HTML
 				+ player.getPlayerAccountBalance()
@@ -556,7 +560,7 @@ public class SlotMachineGridBagFrame extends JFrame {
 
 
 	}
-
+/*
 	public static void main(String[] args) {
 
 		SlotMachineGridBagFrame gridBagFrame = new SlotMachineGridBagFrame();
@@ -564,5 +568,5 @@ public class SlotMachineGridBagFrame extends JFrame {
 		gridBagFrame.setSize(752, 792);
 		gridBagFrame.setVisible(true);
 	}
-
+*/
 }

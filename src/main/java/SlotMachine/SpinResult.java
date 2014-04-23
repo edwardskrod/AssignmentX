@@ -18,14 +18,19 @@ import javax.swing.ImageIcon;
 
 
 public enum SpinResult {
-//	new ImageIcon (getClass().getResource( "Java-bug.jpg" ))
 
-	JAVA("JAVA", 0, 1, "/images/java-bug.jpg", "/images/java-bugBlur.jpg"),
-	LUCKY_SEVEN("LUCKY7", 2, 3, 4, "/images/7.jpg", "/images/7Blur.jpg"), 
-	BAR("BAR", 5, 6, 7, 8, 9, 10, "/images/bar.jpg", "/images/barBlur.jpg"), 
-	BAR_BAR("BARBAR", 11, 12, 13, 14, 15, "/images/barbar.jpg", "/images/barbarBlur.jpg"), 
-	BAR_BAR_BAR("BARBARBAR", 16, 17, 18, 19, "/images/barbarbar.jpg", "/images/barbarbarBlur.jpg"), 
-	BLANK("BLANK", 20, 21, 22, 23, "/images/BLANK.jpg", "/images/BLANK.jpg"), 
+	JAVA("JAVA", 0, 1, SlotMachineConstants.JAVA_ICON, 
+			SlotMachineConstants.JAVA_ICON_BLURRED),
+	LUCKY_SEVEN("LUCKY7", 2, 3, 4, SlotMachineConstants.LUCKY7_ICON, 
+			SlotMachineConstants.LUCKY7_ICON_BLURRED), 
+	BAR("BAR", 5, 6, 7, 8, 9, 10, SlotMachineConstants.BAR_ICON, 
+			SlotMachineConstants.BAR_ICON_BLURRED), 
+	BAR_BAR("BARBAR", 11, 12, 13, 14, 15, SlotMachineConstants.BAR_BAR_ICON, 
+			SlotMachineConstants.BAR_BAR_ICON_BLURRED), 
+	BAR_BAR_BAR("BARBARBAR", 16, 17, 18, 19, SlotMachineConstants.BAR_BAR_BAR_ICON, 
+			SlotMachineConstants.BAR_BAR_BAR_ICON_BLURRED), 
+	BLANK("BLANK", 20, 21, 22, 23, SlotMachineConstants.BLANK, 
+			SlotMachineConstants.BLANK), 
 	UNKNOWN("UNKNOWN");
 
 	private int spinResult1, spinResult2, spinResult3, spinResult4,
